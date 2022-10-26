@@ -1,0 +1,18 @@
+name: hello github actions
+on:
+ push:
+   branches:
+     - main 
+     # branch named main (refs/heads/main)
+jobs:
+ hello_GA:
+  runs-on: ubuntu-latest
+  steps:
+   - run: echo "Before checkout--> event- ${{github.event_name}}, os- ${{runner.os}}, actor- ${{github.actor}}, repo- ${{github.repository}}"
+   - name: Clonning the repo to the repo
+     uses: actions/checkout@main
+   - run: echo "After checkout--> event- ${{github.event_name}}, os- ${{runner.os}}, actor- ${{github.actor}}, repo- ${{github.repository}}"
+   - name: List dirs in the workspace
+     run:
+      ls ${{github.workspace}}
+   - run: echo "Job status--> ${{ job.status }}"
