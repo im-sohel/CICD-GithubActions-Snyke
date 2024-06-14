@@ -10,9 +10,9 @@ jobs:
     name: Snyk Scan
     runs-on: [ubuntu-latest]
     steps:
-      - name: Checkout branch ${{ github.ref }}
-        uses: actions/checkout@v3
   #Snyk for JAVA MS
+      # - name: Checkout branch ${{ github.ref }}
+      #   uses: actions/checkout@v3
       # - name: Setup Snyk CLI
       #   run: |-
       #     curl https://static.snyk.io/cli/latest/snyk-linux -o snyk
@@ -29,6 +29,9 @@ jobs:
       #     snyk code test --all-project --severity-threshold=high
 
 #Snyk for Python
+      - name: Checkout code
+        uses: actions/checkout@master
+        
       - name: Snyk Scan for Python Project
         uses: snyk/actions/python-3.10@master
         env:
