@@ -19,9 +19,10 @@ jobs:
           chmod +x ./snyk
           mv ./snyk /usr/local/bin/ 
      
-      - name: Authenticattion for Snyk Cli
+      - name: Auth Secrets for Snyk Cli
         run: |
           echo "SNYK_TOKEN="`echo ${{ secrets.SNYK_TOKEN }}`"" >> $GITHUB_ENV
+          echo "SNYK_ORGANIZATION_ID="`echo ${{ secrets.SNYK_ORGANIZATION_ID }}`"" >> $GITHUB_ENV
 
       - name: Run Snyk Scan
         run: 
