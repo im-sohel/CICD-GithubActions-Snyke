@@ -32,8 +32,8 @@ jobs:
            architecture: "x64"
 
       - name: Run Snyk Scan
-        run: 
-          # snyk code test --all-projects --severity-threshold=high   ##for JAVA MS
+        run: |
+#          snyk code test --all-projects --severity-threshold=high   ##for JAVA MS
           cd src
           pip install -r requirements.txt
           snyk test --file="src/requirements.txt" --severity-threshold=high
