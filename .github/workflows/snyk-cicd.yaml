@@ -1,0 +1,25 @@
+name: Snyk Scan
+on: 
+  push: 
+    branches: 
+      - 'feature*'
+      - 'main'
+workflow_dispatch:
+
+jobs:
+  snyk_scan:
+    name: Snyk Scan
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout branch ${{ github.ref }}
+        uses: actions/checkout@v3
+        
+      - name: Setup Snyk CLI
+        run: |-
+          curl --compressed https://static.snyk.io/cli/latest/snyk-linux -o snyk
+          chmod +x ./snyk
+          mv ./snyk /usr/local/bin
+      
+      - name: Run Snyk Scan
+        run: 
+          snyk test --all-projects --severity-threshold=high
