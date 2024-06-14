@@ -3,11 +3,7 @@ on:
   push:
     branches:
        - 'feature/*'
-       - 'release/*'
-       - 'develop'
        - 'main'
-
-workflow_dispatch:
 
 jobs:
   snyk_scan:
