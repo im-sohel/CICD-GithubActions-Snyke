@@ -28,4 +28,4 @@ jobs:
       - name: Run Snyk Scan
         run: 
           # snyk code test --all-projects --severity-threshold=high   ##for JAVA MS
-          snyk test --file="**/*req*.txt" --all-projects --severity-threshold=high
+          snyk test --file="**/*req*.txt" --severity-threshold=high
