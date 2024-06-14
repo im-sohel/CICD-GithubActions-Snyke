@@ -1,9 +1,12 @@
 name: Snyk Scan
-on: 
-  push: 
-    branches: 
-      - 'feature*'
-      - 'main'
+on:
+  push:
+    branches:
+       - 'feature/*'
+       - 'release/*'
+       - 'develop'
+       - 'main'
+
 workflow_dispatch:
 
 jobs:
@@ -13,7 +16,7 @@ jobs:
     steps:
       - name: Checkout branch ${{ github.ref }}
         uses: actions/checkout@v3
-        
+
       - name: Setup Snyk CLI
         run: |-
           curl --compressed https://static.snyk.io/cli/latest/snyk-linux -o snyk
