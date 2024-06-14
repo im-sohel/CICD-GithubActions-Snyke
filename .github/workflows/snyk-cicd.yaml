@@ -23,7 +23,6 @@ jobs:
         run: |
           echo "SNYK_TOKEN="`echo ${{ secrets.SNYK_TOKEN }}`"" >> $GITHUB_ENV
           echo "SNYK_ORGANIZATION_ID="`echo ${{ secrets.SNYK_ORGANIZATION_ID }}`"" >> $GITHUB_ENV
-          snyk config set org=${{ secrets.SNYK_ORGANIZATION_ID }}
       
       - name: Setup Python
         uses: actions/setup-python@v3
@@ -35,4 +34,4 @@ jobs:
         run: |-
           cd src/
           pip install -r requirements.txt
-          snyk test --file=requirements.txt --severity-threshold=high
+          snyk test --file=requirements.txt --severity-threshold=high --org=${{ env.SNYK_ORGANIZATION_ID }}
