@@ -35,4 +35,4 @@ jobs:
         run: |-
           cd src/
           pip install -r requirements.txt
-          snyk test --file="src/requirements.txt" --severity-threshold=high
+          snyk test --file=requirements.txt --severity-threshold=high
